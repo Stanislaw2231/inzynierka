@@ -1,42 +1,40 @@
 import pandas as pd
+import os
 
 def read_data(files):
-    acc_set = 1
-    gyr_set = 1
-
-    acc_df = pd.DataFrame()
-    gyr_df = pd.DataFrame()
+    acc_data = []
+    gyr_data = []
 
     for f in files:
-        participant = f.split("\\")[1].replace(f, "").split("-")[0]
-        label = f.split("-")[1]
-        category = f.split("-")[2].rstrip("123")
-
         df = pd.read_csv(f)
+        filename = os.path.basename(f)
+        parts = filename.split("-")
+
+        participant = parts[0]
+        label = parts[1]
+        category = parts[2].rstrip("123")
 
         df["participant"] = participant
         df["label"] = label
         df["category"] = category
 
-        if "Accelerometer" in f:
-            df["set"] = acc_set
-            acc_set += 1
-            acc_df = pd.concat([acc_df, df])
+        if "Accelerometer" in filename:
+            df["set"] = len(acc_data) + 1
+            acc_data.append(df)
+        elif "Gyroscope" in filename:
+            df["set"] = len(gyr_data) + 1
+            gyr_data.append(df)
 
-        if "Gyroscope" in f:
-            df["set"] = gyr_set
-            gyr_set += 1
-            gyr_df = pd.concat([gyr_df, df])
-            
+    acc_df = pd.concat(acc_data, ignore_index=True)
+    gyr_df = pd.concat(gyr_data, ignore_index=True)
+
     acc_df.index = pd.to_datetime(acc_df["epoch (ms)"], unit="ms")
     gyr_df.index = pd.to_datetime(gyr_df["epoch (ms)"], unit="ms")
-    
-    
-    del acc_df["epoch (ms)"]
-    del acc_df["time (01:00)"]
-    del acc_df["elapsed (s)"]       
-    del gyr_df["epoch (ms)"]
-    del gyr_df["time (01:00)"]
-    del gyr_df["elapsed (s)"]
-    
+
+    for col in ["epoch (ms)", "time (01:00)", "elapsed (s)"]:
+        if col in acc_df:
+            del acc_df[col]
+        if col in gyr_df:
+            del gyr_df[col]
+
     return acc_df, gyr_df

@@ -38,4 +38,4 @@ def resample_data(files):
     return result_df
 
 def export_data(data, output_path):
-    data.to_csv(output_path, index=False)
+    data.to_csv(output_path, index=True)

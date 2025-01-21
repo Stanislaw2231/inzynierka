@@ -25,8 +25,8 @@ def read_data(files):
             df["set"] = len(gyr_data) + 1
             gyr_data.append(df)
 
-    acc_df = pd.concat(acc_data, ignore_index=True)
-    gyr_df = pd.concat(gyr_data, ignore_index=True)
+    acc_df = pd.concat(acc_data, ignore_index=False)
+    gyr_df = pd.concat(gyr_data, ignore_index=False)
 
     acc_df.index = pd.to_datetime(acc_df["epoch (ms)"], unit="ms")
     gyr_df.index = pd.to_datetime(gyr_df["epoch (ms)"], unit="ms")

@@ -15,6 +15,8 @@ def LOF_outliers(df, k=20):
     
     for col in columns_to_check:
         df.loc[df['outlier_label'] == -1, col] = np.nan
+        
+    df[columns_to_check] = df[columns_to_check].interpolate(method='linear', limit_direction='both')
 
     return df
 

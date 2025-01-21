@@ -48,11 +48,8 @@ def apply_low_pass_filter(df, duration_data):
     df_filtered.to_csv('data/partially processed/filtered_data.csv')
     return df_filtered
 
-# Example usage:
 duration_data = calculate_set_duration(df)
 df_filtered = apply_low_pass_filter(df, duration_data)
-df_filtered.head(300).to_csv('data/partially processed/filtered_data_sample.csv')
-
     
 
 

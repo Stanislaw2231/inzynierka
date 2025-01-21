@@ -40,6 +40,11 @@ df_pca = pd.DataFrame(X_pca, columns=[f"PC{i+1}" for i in range(len(columns_to_c
 print(df_pca.head())
 
 
+
+
+
+
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report

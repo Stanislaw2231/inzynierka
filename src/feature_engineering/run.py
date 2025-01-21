@@ -1,5 +1,5 @@
 import pandas as pd
-from dimensionality_reduction import perform_pca_lda, plot_explained_variance, compare_random_forest, clean_data_of_redundant_columns
+from dimensionality_reduction import perform_pca_lda, plot_explained_variance, compare_random_forest
 
 
 if __name__ == "__main__":
@@ -11,6 +11,9 @@ if __name__ == "__main__":
     #plot_explained_variance(lda_explained_variance_ratio, 'LDA Scree Plot', 'Linear Discriminant', 'Explained Variance Ratio')
     #plot_explained_variance(pca_explained_variance_ratio, 'PCA Scree Plot', 'Principal Component', 'Explained Variance Ratio')
     compare_random_forest(df, df, ["acc_x","acc_y","acc_z","gyro_x","gyro_y","gyro_z"], "label", "lda")
+    
+    df.head(10).to_csv('data/partially processed/sample.csv', index=False)
+    
     
     # TODO
     #   temporal abstraction

@@ -18,7 +18,6 @@ def butter_lowpass_filter(data, cutoff, fs, order=5):
     return filtfilt(b, a, data)
 
 
-
 def calculate_set_duration(df):
     for i in df["set"].unique():
         duration = df[df["set"] == i].index[-1] - df[df["set"] == i].index[0]

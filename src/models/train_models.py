@@ -20,14 +20,13 @@ y = df["label"]
 fs1 = ["acc_x","acc_y","acc_z","gyro_x","gyro_y","gyro_z"]
 fs2 = ["acc_x","acc_y","acc_z","gyro_x","gyro_y","gyro_z","pca_1","pca_2","pca_3"]
 fs3 = ["acc_x","acc_y","acc_z","gyro_x","gyro_y","gyro_z","lda_1","lda_2","lda_3"]
-fs4 = ["acc_x","acc_y","acc_z","gyro_x","gyro_y","gyro_z","acc_x_roll","acc_y_roll",
-       "acc_z_roll","gyro_x_roll","gyro_y_roll","gyro_z_roll"],
-fs5 = ["lda_1","lda_2","lda_3","acc_x_roll","acc_y_roll"],
-fs6 = ['acc_y', 'pca_2', 'acc_x_roll', 'acc_y_roll', 'acc_z_roll', 'gyro_z_roll'],
+fs4 = ["acc_x","acc_y","acc_z","gyro_x","gyro_y","gyro_z","acc_x_roll","acc_y_roll", "acc_z_roll","gyro_x_roll","gyro_y_roll","gyro_z_roll"]
+fs5 = ["lda_1","lda_2","lda_3","acc_x_roll","acc_y_roll"]
+fs6 = ['acc_y', 'pca_2', 'acc_x_roll', 'acc_y_roll', 'acc_z_roll', 'gyro_z_roll']
 fs7 = ['acc_x', 'gyro_x', 'gyro_z', 'lda_1', 'lda_2', 'acc_x_roll', 'acc_y_roll', 'acc_z_roll', 'gyro_x_roll', 'gyro_z_roll']
 
 
-feature_sets = [fs1, fs2, fs3, fs4]
+feature_sets = [fs1, fs2, fs3, fs4, fs5, fs6, fs7]
 
 # Models and parameter grids
 models = {

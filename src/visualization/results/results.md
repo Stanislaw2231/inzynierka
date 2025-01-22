@@ -25,3 +25,21 @@ gyro_y_roll    0.008554
       acc_z    0.002033
 
 
+Random forest without participant A
+{'clf__bootstrap': False, 'clf__max_depth': 30, 'clf__min_samples_leaf': 1, 'clf__min_samples_split': 2, 'clf__n_estimators': 50}
+Accuracy on participant A: 0.9778169901688933
+Classification Report:
+               precision    recall  f1-score   support
+
+       bench       0.82      1.00      0.90       370
+        dead       1.00      0.99      1.00       709
+         ohp       1.00      0.91      0.95       963
+        rest       1.00      1.00      1.00       984
+         row       0.97      1.00      0.99       113
+       squat       1.00      1.00      1.00       828
+
+    accuracy                           0.98      3967
+   macro avg       0.96      0.98      0.97      3967
+weighted avg       0.98      0.98      0.98      3967
+
+RandomForest	feature set6	{'clf__bootstrap': False, 'clf__max_depth': 30, 'clf__min_samples_leaf': 1, 'clf__min_samples_split': 2, 'clf__n_estimators': 50}	accuracy:0.9799414960300877	training time:1.7233915328979492

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
+import seaborn as sns
 
 
 
@@ -45,6 +46,11 @@ def perform_pca_lda(df):
     df["lda_1"] = X_lda[:,0]
     df["lda_2"] = X_lda[:,1]
     df["lda_3"] = X_lda[:,2]
+    
+    #plt.figure(figsize=(8,6))
+    #sns.scatterplot(x="lda_1", y="lda_2", hue="label", data=df, palette="Set1")
+    #plt.title("LDA Projection")
+    #plt.show()
 
     df.to_pickle("data/partially processed/data_with_lda_pca.pkl")
     return df, pca.explained_variance_ratio_, lda.explained_variance_ratio_

@@ -43,6 +43,8 @@ def apply_low_pass_filter(df, duration_data):
         for col in columns_to_check:
             filtered = butter_lowpass_filter(subset[col].values, cutoff, fs)
             df_filtered.loc[subset.index, col] = filtered
+            
+            
 
     df_filtered.to_csv('data/partially processed/filtered_data.csv')
     return df_filtered
